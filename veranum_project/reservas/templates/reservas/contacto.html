@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONTACTO</title>
+    <!-- Incluye el CSS de Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'index' %}">
+        <img src="{% static 'imagenes/logo (2).png' %}" alt="Hotel" height="30">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'index' %}">INICIO</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'lista_hoteles' %}">HOTELES</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'contacto' %}">CONTACTO</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mx-auto" style="max-width: 800px;">
+    <form action="/" method="POST" id="formulario-contacto">
+        <div class="my-3">
+          <label for="email" class="form-label">CORREO ELECTRÓNICO</label>
+          <input type="email" id="email" class="form-control" required>
+        </div>
+    
+        <div class="my-3">
+            <label for="nombres" class="form-label">NOMBRES</label>
+            <input type="text" id="nombres" class="form-control" required>
+        </div>
+        <div class="my-3">
+            <label for="apellido-paterno" class="form-label">APELLIDO PATERNO</label>
+            <input type="text" id="apellido-paterno" class="form-control" required>
+        </div>
+        <div class="my-3">
+            <label for="apellido-materno" class="form-label">APELLIDO MASTERNO</label>
+            <input type="text" id="apellido-materno" class="form-control" required>
+        </div>
+        <h5>Género</h5>
+        <div class="radio-container">
+          
+          <div class="from-check form-check-inline">
+              <label class="from-check-label" for="check1">Hombre</label>
+              <input class="from-check-input" id="check1" type="radio" name="genero">
+          </div>
+
+          <div class="from-check form-check-inline">
+              <label class="from-check-label" for="check2">Mujer</label>
+              <input class="from-check-input" id="check2" type="radio" name="genero">
+          </div>
+
+          <div class="from-check form-check-inline">
+              <label class="from-check-label" for="check3">Otro</label>
+              <input class="from-check-input" id="check3" type="radio" name="genero">
+          </div>
+
+      </div>
+
+
+        <div id="regiones">
+        </div>
+        <div id="comunas">
+        </div>  
+        
+        <div class="form-floating">
+            <h4>¡¡¡DEJA TUS CONSULTAS AQUÍ!!!</h4>
+            <textarea class="form-control" placeholder="" id="floatingTextarea" ></textarea>
+            <label for="floatingTextarea"></label>
+        </div>          
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button class="btn btn-success my-3" type="button" onclick="save()">ENVIAR</button>
+        </div>
+        <div id="message-error" class="my-3 alert alert-danger alert-dismissible fade" role="alert">
+            <div id="message">&nbsp;</div>
+        </div> 
+    </form>
+  </div>
+   <!-- Incluye los scripts de Bootstrap 5 -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{% static 'js/formulario-contacto.js' %}"></script>
+  <script src="{% static 'js/integracion-dpa.js' %}"></script>
+</body>
+</html>

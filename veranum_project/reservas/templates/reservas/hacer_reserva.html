@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacer Reserva</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="{% static 'imagenes/logo.png' %}" alt="Hotel" height="30">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'index' %}">INICIO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'lista_promociones' %}">PROMOCIONES</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-5">
+        <h2 class="mb-4">Hacer Reserva</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" required>
+            </div>
+            <div class="mb-3">
+                <label for="rut" class="form-label">RUT</label>
+                <input type="text" class="form-control" id="rut" name="rut" required>
+            </div>
+            <div class="mb-3">
+                <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
+                <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento" required>
+            </div>
+            <div class="mb-3">
+                <label for="fechaEntrada" class="form-label">Fecha de Entrada</label>
+                <input type="date" class="form-control" id="fechaEntrada" name="fechaEntrada" required>
+            </div>
+            <div class="mb-3">
+                <label for="fechaSalida" class="form-label">Fecha de Salida</label>
+                <input type="date" class="form-control" id="fechaSalida" name="fechaSalida" required>
+            </div>
+            <div class="mb-3">
+                <label for="promoCodeApply" class="form-label">Código de Promoción</label>
+                <input type="text" class="form-control" id="promoCodeApply" name="promoCodeApply">
+            </div>
+            <button type="submit" class="btn btn-primary">Confirmar Reserva</button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
