@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROMOCIONES</title>
+    <!-- Incluye el CSS de Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        .countdown {
+            font-size: 2em;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="{% static 'imagenes/logo (2).png' %}" alt="Hotel" height="30">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'index' %}">INICIO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'lista_hoteles' %}">HOTELES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contacto' %}">CONTACTO</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="{% url 'promociones' %}">PROMOCIONES</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container mt-5">
+        <h1 class="text-center">Promociones</h1>
+        <p class="text-center">¡Aprovecha nuestras promociones por tiempo limitado!</p>
+        <div class="countdown text-center" id="countdown"></div>
+    </div>
+
+    <script>
+        // Define la fecha de finalización de la promoción
+        var countDownDate = new Date("Jul 31, 2024 23:59:59").getTime();
+
+        // Actualiza el contador cada 1 segundo
+        var x = setInterval(function() {
+            // Obtén la fecha y hora actual
+            var now = new Date().getTime();
+
+            // Calcula la distancia entre la fecha actual y la fecha de finalización
+            var distance = countDownDate - now;
+
+            // Calcula el tiempo restante en días, horas, minutos y segundos
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Muestra el resultado en el elemento con id="countdown"
+            document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
+
+            // Si el contador llega a cero, muestra un mensaje
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "LA PROMOCIÓN HA TERMINADO";
+            }
+        }, 1000);
+    </script>
+    <h3 style="text-align: center;">Reserva con nosotros antes del 31 de Julio por 3 noches o más y aleatoriamente se te incluirá uno de estos servicios extra a tu reserva</h3>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{% static 'imagenes/promo_1.jpg' %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{% static 'imagenes/promo_2.jpg' %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{% static 'imagenes/promo_3.jpg' %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
